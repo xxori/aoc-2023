@@ -10,18 +10,18 @@ pub fn main() {
   io.println("Part 1:")
   data
   |> result.unwrap("")
-  |> calibrate_1
+  |> part_1
   |> string.inspect
   |> io.println
   io.println("Part 2:")
   data
   |> result.unwrap("")
-  |> calibrate_2
+  |> part_2
   |> string.inspect
   |> io.println
 }
 
-pub fn calibrate_1(lines: String) -> Int {
+pub fn part_1(lines: String) -> Int {
   lines
   |> string.split("\n")
   |> list.map(fn(x) {
@@ -36,7 +36,7 @@ pub fn calibrate_1(lines: String) -> Int {
 
 // All we have to do is preprocess the input, allowing calibrate_1 to recognise
 // the string form of integers
-pub fn calibrate_2(lines: String) -> Int {
+pub fn part_2(lines: String) -> Int {
   lines
   // Since we are only interested in the overall leftmost and rightmost number,
   // we can do this to prevent collisions from deleting our numbers.
@@ -50,5 +50,5 @@ pub fn calibrate_2(lines: String) -> Int {
   |> string.replace("seven", "s7n")
   |> string.replace("eight", "e8t")
   |> string.replace("nine", "n9e")
-  |> calibrate_1
+  |> part_1
 }
