@@ -9,13 +9,6 @@ PartOne ← /+∵ProcOne⊜□≠, @\n
 PartOne &fras "../day01/data.txt"
 $"Part 1: _"
 
-# Differingly from my Gleam solution, part 2 here is handled using
-# an ever-decreasing window into the string, i.e. "one" -> ["one","ne","o"]
-# Then, we can see if each one begins with an integer or the string form of an integer,
-# and if it does, replace the whole thing with that integer, otherwise just leave the string as is.
-# This would turn one into ["1","ne","e"]. Then we can simple grab the first
-# and last int-parseable string and add them a before.
-
 # Returns the first arg if third arg starts with the second arg, 
 # otherwise returns third arg unchanged
 SW ← ⊔⊡:⇌⊂□⊙(⊙(≍⍣↙([];;;)⊙:⧻.)□,)

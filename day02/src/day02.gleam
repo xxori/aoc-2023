@@ -27,31 +27,29 @@ const opts = regex.Options(multi_line: False, case_insensitive: False)
 pub fn part_1(lines: String) {
   let assert Ok(re1) = regex.compile("Game (\\d+): (.*)", opts)
   let assert Ok(re2) = regex.compile("(\\d+) (\\w+)", opts)
-  lines
-  |> string.split("\n")
-  |> list.fold(
+  use acc, x <- list.fold(
+    lines
+    |> string.split("\n"),
     0,
-    fn(acc, x) {
-      let [regex.Match(_, [Some(id), Some(rest)])] = regex.scan(re1, x)
-      let assert Ok(id) = int.parse(id)
-      let a =
-        regex.scan(re2, rest)
-        |> list.map(fn(y) {
-          let regex.Match(_, [Some(num), Some(col)]) = y
-          #(
-            col,
-            int.parse(num)
-            |> result.unwrap(0),
-          )
-        })
-      id * bool.to_int(
-        max(list.key_filter(a, "red")) <= 12 && max(list.key_filter(a, "green")) <= 13 && max(list.key_filter(
-          a,
-          "blue",
-        )) <= 14,
-      ) + acc
-    },
   )
+  let [regex.Match(_, [Some(id), Some(rest)])] = regex.scan(re1, x)
+  let assert Ok(id) = int.parse(id)
+  let a =
+    regex.scan(re2, rest)
+    |> list.map(fn(y) {
+      let regex.Match(_, [Some(num), Some(col)]) = y
+      #(
+        col,
+        int.parse(num)
+        |> result.unwrap(0),
+      )
+    })
+  id * bool.to_int(
+    max(list.key_filter(a, "red")) <= 12 && max(list.key_filter(a, "green")) <= 13 && max(list.key_filter(
+      a,
+      "blue",
+    )) <= 14,
+  ) + acc
 }
 
 fn max(l: List(Int)) -> Int {
@@ -63,25 +61,23 @@ fn max(l: List(Int)) -> Int {
 
 pub fn part_2(lines: String) {
   let assert Ok(re) = regex.compile("(\\d+) (\\w+)", opts)
-  lines
-  |> string.split("\n")
-  |> list.fold(
+  use acc, x <- list.fold(
+    lines
+    |> string.split("\n"),
     0,
-    fn(acc, x) {
-      let a =
-        regex.scan(re, x)
-        |> list.map(fn(y) {
-          let regex.Match(_, [Some(num), Some(col)]) = y
-          #(
-            col,
-            int.parse(num)
-            |> result.unwrap(0),
-          )
-        })
-      max(list.key_filter(a, "red")) * max(list.key_filter(a, "blue")) * max(list.key_filter(
-        a,
-        "green",
-      )) + acc
-    },
   )
+  let a =
+    regex.scan(re, x)
+    |> list.map(fn(y) {
+      let regex.Match(_, [Some(num), Some(col)]) = y
+      #(
+        col,
+        int.parse(num)
+        |> result.unwrap(0),
+      )
+    })
+  max(list.key_filter(a, "red")) * max(list.key_filter(a, "blue")) * max(list.key_filter(
+    a,
+    "green",
+  )) + acc
 }
