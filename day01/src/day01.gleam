@@ -6,16 +6,14 @@ import gleam/io
 import simplifile
 
 pub fn main() {
-  let data = simplifile.read("./data.txt")
+  let assert Ok(data) = simplifile.read("./data.txt")
   io.println("Part 1:")
   data
-  |> result.unwrap("")
   |> part_1
   |> string.inspect
   |> io.println
   io.println("Part 2:")
   data
-  |> result.unwrap("")
   |> part_2
   |> string.inspect
   |> io.println
