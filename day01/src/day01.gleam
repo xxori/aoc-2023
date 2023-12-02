@@ -22,23 +22,20 @@ pub fn main() {
 pub fn part_1(lines: String) -> Int {
   lines
   |> string.split("\n")
-  |> list.map(fn(x) {
-    let y =
-      x
-      |> string.split("")
-      |> list.filter_map(fn(y) { int.parse(y) })
-    result.unwrap(list.first(y), 0) * 10 + result.unwrap(list.last(y), 0)
-  })
-  |> int.sum
+  |> list.fold(
+    0,
+    fn(acc, x) {
+      let y =
+        x
+        |> string.split("")
+        |> list.filter_map(int.parse)
+      result.unwrap(list.first(y), 0) * 10 + result.unwrap(list.last(y), 0) + acc
+    },
+  )
 }
 
-// All we have to do is preprocess the input, allowing calibrate_1 to recognise
-// the string form of integers
 pub fn part_2(lines: String) -> Int {
   lines
-  // Since we are only interested in the overall leftmost and rightmost number,
-  // we can do this to prevent collisions from deleting our numbers.
-  // It's kinda scuffed but it works
   |> string.replace("one", "o1e")
   |> string.replace("two", "t2e")
   |> string.replace("three", "t3e")

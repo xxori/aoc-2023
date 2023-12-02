@@ -17,11 +17,11 @@ $"Part 1: _"
 # and last int-parseable string and add them a before.
 
 # Returns the first arg if third arg starts with the second arg, 
-# otherwise returns third arg
-StartsWith ← ⊔⊡:⇌⊂□⊙(⊙(≍⍣↙([];;;)⊙:⧻.)□,)
+# otherwise returns third arg unchanged
+SW ← ⊔⊡:⇌⊂□⊙(⊙(≍⍣↙([];;;)⊙:⧻.)□,)
 
-# Chain Startswith for all numbers (string form and num form)
-StartsAll ← StartsWith "9" "nine" StartsWith "9" "9" StartsWith "8" "eight" StartsWith "8" "8" StartsWith "7" "seven" StartsWith "7" "7" StartsWith "6" "six" StartsWith "6" "6" StartsWith "5" "five" StartsWith "5" "5" StartsWith "4" "four" StartsWith "4" "4" StartsWith "3" "three" StartsWith "3" "3" StartsWith "2" "two" StartsWith "2" "2" StartsWith "1" "one" StartsWith "1" "1"
+# Chain SW for all numbers (string form and num form)
+StartsAll ← SW "9" "nine" SW "9" "9" SW "8" "eight" SW "8" "8" SW "7" "seven" SW "7" "7" SW "6" "six" SW "6" "6" SW "5" "five" SW "5" "5" SW "4" "four" SW "4" "4" SW "3" "three" SW "3" "3" SW "2" "two" SW "2" "2" SW "1" "one" SW "1" "1"
 
 # Same as before, but accounting for string versions of the integers
 ProcTwo ← +× 10 ⊢:⊢ ⇌.▽.∵(⍣parse(0;;)StartsAll ⊔)≡(□↘⊔⊡0:⊔⊡1.)⍉⊟⊙(↯:□:)⇡.⧻.⊔
