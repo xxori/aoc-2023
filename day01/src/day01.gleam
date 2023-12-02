@@ -34,24 +34,21 @@ pub fn calibrate_1(lines: String) -> Int {
   |> int.sum
 }
 
-pub fn calibrate_2(lines: String) {
+// All we have to do is preprocess the input, allowing calibrate_1 to recognise
+// the string form of integers
+pub fn calibrate_2(lines: String) -> Int {
   lines
-  |> string.split("\n")
-  |> list.map(fn(x) {
-    x
-    // Since we are only interested in the overall leftmost and rightmost number,
-    // we can do this to prevent collisions from deleting our numbers.
-    // It's kinda scuffed but it works
-    |> string.replace("one", "o1e")
-    |> string.replace("two", "t2e")
-    |> string.replace("three", "t3e")
-    |> string.replace("four", "f4e")
-    |> string.replace("five", "f5e")
-    |> string.replace("six", "s6e")
-    |> string.replace("seven", "s7e")
-    |> string.replace("eight", "e8e")
-    |> string.replace("nine", "n9e")
-  })
-  |> string.join("\n")
+  // Since we are only interested in the overall leftmost and rightmost number,
+  // we can do this to prevent collisions from deleting our numbers.
+  // It's kinda scuffed but it works
+  |> string.replace("one", "o1e")
+  |> string.replace("two", "t2e")
+  |> string.replace("three", "t3e")
+  |> string.replace("four", "f4r")
+  |> string.replace("five", "f5e")
+  |> string.replace("six", "s6x")
+  |> string.replace("seven", "s7n")
+  |> string.replace("eight", "e8t")
+  |> string.replace("nine", "n9e")
   |> calibrate_1
 }
