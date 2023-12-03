@@ -17,7 +17,7 @@ SW ← ⊔⊡:⇌⊂□⊙(⊙(≍⍣↙([];;;)⊙:⧻.)□,)
 StartsAll ← SW "9" "nine" SW "9" "9" SW "8" "eight" SW "8" "8" SW "7" "seven" SW "7" "7" SW "6" "six" SW "6" "6" SW "5" "five" SW "5" "5" SW "4" "four" SW "4" "4" SW "3" "three" SW "3" "3" SW "2" "two" SW "2" "2" SW "1" "one" SW "1" "1"
 
 # Same as before, but accounting for string versions of the integers
-ProcTwo ← +× 10 ⊢:⊢ ⇌.▽.∵(⍣parse(0;;)StartsAll ⊔)≡(□↘⊔⊡0:⊔⊡1.)⍉⊟⊙(↯:□:)⇡.⧻.⊔
+ProcTwo ← +×10⊢:⊢⇌.▽.∵(⍣parse(0;;)StartsAll ⊔)≡(□↘⊔⊡0:⊔⊡1.)⍉⊟⊙(↯:□:)⇡.⧻.⊔
 PartTwo ← /+∵ProcTwo ⊜□≠, @\n
 
 PartTwo &fras "../day01/data.txt"

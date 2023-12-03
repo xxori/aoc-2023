@@ -1,4 +1,4 @@
-name = "day02"
+name = "day03"
 version = "0.1.0"
 gleam = ">= 0.32.0"
 

@@ -2,7 +2,6 @@
 
 # Takes an input of boxed strings starting with space ie [box" 3 green" box" 5 red"]
 # For each colour that isnt present, this function adds it with a count of 0
-# RestoreZeroColors ← ⊂▽:[□" 0 red" □" 0 green" □" 0 blue"][≍≠..∵(≍□"blue"□↘+1⊢⊚⌕@ .↘1⊔):⊙:≍≠..∵(≍□"green"□↘+1⊢⊚⌕@ .↘1⊔):≍≠..∵(≍□"red"□↘+1⊢⊚⌕@ .↘1⊔)]...⊜□≠,@,⊔
 RestoreZeroColors ← ⊂▽:[□" 0 red" □" 0 green" □" 0 blue"][≍≠..∵(≍□"red"□↘+1⊢⊚⌕@ .↘1⊔):⊙:≍≠..∵(≍□"green"□↘+1⊢⊚⌕@ .↘1⊔):≍≠..∵(≍□"blue"□↘+1⊢⊚⌕@ .↘1⊔)]...⊜□≠,@,⊔
 
 # Process one game string, returning its ID if it is valid and 0 otherwise
