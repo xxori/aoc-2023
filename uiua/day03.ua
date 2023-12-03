@@ -1,4 +1,5 @@
 # Experimental!
+# We have to use recursion to expand our int selections
 FindNumbers ← ≡(∊:"1234567890")
 FindSymbolsOne ← ¬≡(∊:"1234567890.")
 GetCheckMask ← ¬⌕0⍥(⍉+⬚0↻¯1.+⬚0↻1.)2 FindSymbolsOne
